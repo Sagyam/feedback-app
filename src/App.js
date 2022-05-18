@@ -1,12 +1,13 @@
 import { v4 as uuidv4 } from 'uuid'
 import React, { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom'
 import Header from './components/Header'
 import FeedbackList from './components/FeedbackList'
 import FeedbackData from './data/FeedbackData'
 import FeedbackStats from './components/FeedbackStats'
 import FeedBackForm from './components/FeedBackForm'
 import About from './pages/About'
+import AboutIconLink from './components/AboutIconLink'
 
 function App() {
   const [feedbacks, setFeedbacks] = useState(FeedbackData)
@@ -44,6 +45,7 @@ function App() {
           ></Route>
           <Route path='/about' element={<About />} />
         </Routes>
+        <AboutIconLink />
       </div>
     </Router>
   )
