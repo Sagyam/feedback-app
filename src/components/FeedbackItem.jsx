@@ -1,3 +1,4 @@
+import React from 'react'
 import { FaTimes, FaEdit } from 'react-icons/fa'
 import { PropTypes } from 'prop-types'
 import Card from './shared/Card'
