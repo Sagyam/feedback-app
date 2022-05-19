@@ -1,15 +1,16 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import Card from './shared/Card'
 import Button from './shared/Button'
 import RatingSelect from './RatingSelect'
+import FeedBackContext from '../context/FeedBackContext'
 
-function FeedBackForm({ handleAdd }) {
+function FeedBackForm() {
   const [text, setText] = useState('')
   const [btnDisabled, setBtnDisabled] = useState(true)
   const [message, setMessage] = useState('')
   const [rating, setRating] = useState(0)
+  const { addFeedback } = useContext(FeedBackContext)
 
   const handleTextChange = (e) => {
     if (text === '') {
@@ -31,7 +32,7 @@ function FeedBackForm({ handleAdd }) {
         text,
         rating,
       }
-      handleAdd(newFeedback)
+      addFeedback(newFeedback)
       setText('')
     }
   }
@@ -65,13 +66,6 @@ Button.defaultProps = {
   placeholder: '',
   isDisabled: false,
   type: 'button',
-}
-
-Button.propTypes = {
-  version: PropTypes.string,
-  placeholder: PropTypes.string,
-  isDisabled: PropTypes.bool,
-  type: PropTypes.string,
 }
 
 export default FeedBackForm
