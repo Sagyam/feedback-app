@@ -25,7 +25,8 @@
     "server": "json-server --watch db.json --port 5000",
     "dev": "concurrently  \"npm run server\" \"npm run start\"",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ",
-    "format": "prettier --write './src/**/*.{ts,tsx,js,jsx}'"
+    "format": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": [
