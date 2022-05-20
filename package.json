@@ -26,7 +26,7 @@
     "dev": "concurrently  \"npm run server\" \"npm run start\"",
     "lint": "eslint --ext .js,.jsx,.ts,.tsx ./src ",
     "format": "prettier --write './src/**/*.{ts,tsx,js,jsx}'",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run install && npm run build"
   },
   "eslintConfig": {
     "extends": [
