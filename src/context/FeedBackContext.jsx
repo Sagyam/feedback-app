@@ -2,8 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 
 const FeedBackContext = createContext()
 
-const BASE_URL = 'https://feedback-app-sagyam.herokuapp.com'
-//const BASE_URL = 'http://localhost:5000'
+const BASE_URL = 'https://mock-server-sagyam.herokuapp.com/feedback'
 
 export const FeedBackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,9 +13,7 @@ export const FeedBackProvider = ({ children }) => {
   }, [])
 
   const fetchFeedbacks = async () => {
-    const response = await fetch(
-      `${BASE_URL}/feedback?_sort=rating&_order=desc`
-    )
+    const response = await fetch(`${BASE_URL}/?_sort=rating&_order=desc`)
     const feedbacks = await response.json()
     setFeedbacks(feedbacks)
     setIsLoading(false)
@@ -24,8 +21,11 @@ export const FeedBackProvider = ({ children }) => {
 
   const deleteFeedback = async (id) => {
     if (window.confirm('Are you sure you want to delete this feedback?')) {
-      await fetch(`${BASE_URL}/feedback/${id}`, {
+      await fetch(`${BASE_URL}/${id}`, {
         method: 'DELETE',
+        headers: {
+          'Content-Type': 'application/json',
+        },
       })
       const newFeedbacks = feedbacks.filter((feedback) => feedback.id !== id)
       setFeedbacks(newFeedbacks)
@@ -33,7 +33,7 @@ export const FeedBackProvider = ({ children }) => {
   }
 
   const addFeedback = async (newFeedback) => {
-    const response = await fetch(`${BASE_URL}/feedback`, {
+    const response = await fetch(`${BASE_URL}`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -58,7 +58,7 @@ export const FeedBackProvider = ({ children }) => {
   }
 
   const updateFeedback = async (id, updFeedback) => {
-    await fetch(`${BASE_URL}/feedback/${id}`, {
+    await fetch(`${BASE_URL}/${id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
