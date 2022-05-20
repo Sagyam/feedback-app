@@ -24,13 +24,12 @@ This project goes over all of the fundamentals of React including...
 ## Install dependencies
 
 ```bash
-npm install
+yarn install
 ```
 
 ## Run the app
 
 ```bash
-npm start
+yarn start
 ```
 
-This will run JSON-server on port :5000 and React on port :3000
