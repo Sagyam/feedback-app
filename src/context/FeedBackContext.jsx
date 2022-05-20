@@ -2,7 +2,8 @@ import React, { createContext, useState, useEffect } from 'react'
 
 const FeedBackContext = createContext()
 
-const BASE_URL = 'https://feedback-app-sagyam.herokuapp.com'
+const BASE_URL = 'https://feedback-app-sagyam.herokuapp.com:5000'
+//const BASE_URL = 'http://localhost:5000'
 
 export const FeedBackProvider = ({ children }) => {
   const [isLoading, setIsLoading] = useState(true)
@@ -14,7 +15,7 @@ export const FeedBackProvider = ({ children }) => {
 
   const fetchFeedbacks = async () => {
     const response = await fetch(
-      BASE_URL + '/feedback?_sort=rating&_order=desc'
+      `${BASE_URL}/feedback?_sort=rating&_order=desc`
     )
     const feedbacks = await response.json()
     setFeedbacks(feedbacks)
@@ -32,7 +33,7 @@ export const FeedBackProvider = ({ children }) => {
   }
 
   const addFeedback = async (newFeedback) => {
-    const response = await fetch(BASE_URL + '/feedback', {
+    const response = await fetch(`${BASE_URL}/feedback`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
