@@ -2,7 +2,7 @@ import React, { createContext, useState, useEffect } from 'react'
 
 const FeedBackContext = createContext()
 
-const BASE_URL = 'https://feedback-app-sagyam.herokuapp.com:5000'
+const BASE_URL = 'https://feedback-app-sagyam.herokuapp.com'
 //const BASE_URL = 'http://localhost:5000'
 
 export const FeedBackProvider = ({ children }) => {
